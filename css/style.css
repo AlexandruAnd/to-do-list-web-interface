@@ -2,6 +2,7 @@
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 30px;
 }
 
 #tasks-table td, #tasks-table th {
@@ -20,6 +21,8 @@
     background-color: #4CAF50;
     color: white;
 }
+/* ch by class */
 /*.delete-task{*/
+
 /*    color: sienna;*/
 /*}*/
