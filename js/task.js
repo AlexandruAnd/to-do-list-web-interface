@@ -15,6 +15,26 @@ window.ToDoList = {
         })
 
     },
+    createTask: function(){
+      let descriptionValue = $("#description-field").val();
+      let deadlineValue = $("#deadline-field").val();
+
+      let requestBody={
+          description:descriptionValue,
+          deadline:deadlineValue
+      };
+
+      $.ajax({
+          url:ToDoList.API_BASE_URL,
+          method: "POST",
+          //also known as MIME type
+          contentType:"application/json",
+          data:JSON.stringify(requestBody)
+      }).done(function () {
+          ToDoList.getTasks();
+
+      })
+    },
 
     getTaskRow: function (task) {
         // spread operator(...)
@@ -48,7 +68,17 @@ window.ToDoList = {
         $("#tasks-table tbody").html(tableBody);
 
 
+    },
+
+    bindEvents:function () {
+        //capturing the submit form event to bind our function to it
+        $("#new-task-form").submit(function (event) {
+            event.preventDefault();
+            ToDoList.createTask();
+        })
+
     }
 
 };
 ToDoList.getTasks();
+ToDoList.bindEvents();
